@@ -6,10 +6,11 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y upgrade && \
     apt-get install -y software-properties-common && \
+    LANG=C.UTF-8 add-apt-repository ppa:ondrej/php5-5.6 && \
     nginx=stable && \
     add-apt-repository ppa:nginx/$nginx && \
     apt-get update && \
-    BUILD_PACKAGES="supervisor nginx php5-fpm git php5-mysql php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-xmlrpc php5-xsl pwgen" && \
+    BUILD_PACKAGES="supervisor nginx php5 git php5-mysql php5-cli php5-json php5-curl php5-gd php5-intl php5-mcrypt php5-memcache php5-sqlite php5-xmlrpc php5-xsl pwgen" && \
     apt-get -y install $BUILD_PACKAGES && \
     apt-get remove --purge -y software-properties-common && \
     apt-get autoremove -y && apt-get clean && apt-get autoclean
