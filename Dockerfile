@@ -26,7 +26,8 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 # Needed dirs
 RUN mkdir /var/run/sshd && \
     mkdir /var/run/supervisor && \
-    mkdir -p /var/log/supervisor
+    mkdir -p /var/log/supervisor && \
+    mkdir /run/php
 
 ADD nginx-vhost.conf /etc/nginx/sites-available/default
 ADD index.php /var/www/html/index.php
